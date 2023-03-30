@@ -6,7 +6,9 @@
 
  namespace TwentyTwentyChild;
 
- use TwentyTwentyChild\Custom\Filters, TwentyTwentyChild\CPT\Products;
+ use TwentyTwentyChild\Custom\Filters, 
+    TwentyTwentyChild\CPT\Products,
+    TwentyTwentyChild\Taxonomy\ProductsCategory;
 
  class Setup {
 
@@ -30,6 +32,7 @@
 
         $this->register_custom_hooks();
         $this->register_custom_post_types();
+        $this->register_custom_taxonomies();
     }
 
     /**
@@ -65,5 +68,13 @@
 
     private function register_custom_post_types() {
         new Products( 'products' );
+    }
+
+    /**
+     * Register Custom Taxonomies
+     */
+
+     private function register_custom_taxonomies() {
+        new ProductsCategory( 'products_category' );
     }
 }

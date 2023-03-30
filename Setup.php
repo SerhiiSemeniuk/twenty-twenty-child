@@ -6,7 +6,7 @@
 
  namespace TwentyTwentyChild;
 
- use TwentyTwentyChild\Custom\Filters;
+ use TwentyTwentyChild\Custom\Filters, TwentyTwentyChild\CPT\Products;
 
  class Setup {
 
@@ -28,7 +28,8 @@
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
         add_action( 'after_setup_theme', array( $this, 'after_setup_theme' ) );
 
-        new Filters();
+        $this->register_custom_hooks();
+        $this->register_custom_post_types();
     }
 
     /**
@@ -48,5 +49,21 @@
     public function after_setup_theme() {
         // Loads the theme's translated strings
         load_child_theme_textdomain( 'twentytwentychild', get_stylesheet_directory() . '/languages' );
+    }
+
+    /**
+     * Custom filters and actions
+     */
+
+    private function register_custom_hooks() {
+        new Filters();
+    }
+
+    /**
+     * Register Custom Post Types
+     */
+
+    private function register_custom_post_types() {
+        new Products( 'products' );
     }
 }

@@ -6,6 +6,8 @@
 
  namespace TwentyTwentyChild;
 
+ use TwentyTwentyChild\Custom\Filters;
+
  class Setup {
 
     /**
@@ -25,6 +27,8 @@
 
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
         add_action( 'after_setup_theme', array( $this, 'after_setup_theme' ) );
+
+        new Filters();
     }
 
     /**

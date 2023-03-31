@@ -8,7 +8,8 @@
 
  use TwentyTwentyChild\Custom\Filters, 
     TwentyTwentyChild\CPT\Products,
-    TwentyTwentyChild\Taxonomy\ProductsCategory;
+    TwentyTwentyChild\Taxonomy\ProductsCategory,
+    TwentyTwentyChild\Metabox\ProductGalery;
 
  class Setup {
 
@@ -33,6 +34,7 @@
         $this->register_custom_hooks();
         $this->register_custom_post_types();
         $this->register_custom_taxonomies();
+        $this->register_meta_boxes();
     }
 
     /**
@@ -77,4 +79,13 @@
      private function register_custom_taxonomies() {
         new ProductsCategory( 'products_category' );
     }
+
+    /**
+     * Register Meta Boxes
+     */
+
+     private function register_meta_boxes() {
+        new ProductGalery( 'product_gallery', __( 'Product Gallery', 'twentytwentychild' ) );
+    }
+    
 }

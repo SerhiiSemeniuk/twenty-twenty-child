@@ -49,12 +49,13 @@ get_header(); ?>
         </div>
 	<?php else : ?>
 
-		
+		<h2><?php _e( 'There is no any product here, yet', 'twentytwentychild' ); ?></h2>
 
 		
     <?php endif;
     
-    get_template_part( 'template-parts/pagination' ); ?>
+    get_template_part( 'template-parts/pagination' ); 
+    wp_reset_postdata(); ?>
 
 </main><!-- #site-content -->
 

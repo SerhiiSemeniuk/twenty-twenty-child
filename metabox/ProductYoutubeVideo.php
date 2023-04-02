@@ -53,8 +53,8 @@ class ProductYoutubeVideo extends CustomPostMeta {
     }
 
     public function admin_enqueue_scripts( $hook ) {
-        $screen = get_current_screen(); 
-        if( 'post.php' == $hook && in_array( $screen->post_type, $this->post_types ) ) {
+        $screen = get_current_screen();
+        if( ( 'post.php' == $hook || 'post-new.php' == $hook ) && in_array( $screen->post_type, $this->post_types ) ) {
             wp_enqueue_script( 'twentytwenty-' . $this->meta_key . 'script', get_stylesheet_directory_uri() . '/assets/js/product-youtube-video.js', array( 'jquery' ) );
             wp_enqueue_style( 'twentytwenty-' . $this->meta_key . 'css', get_stylesheet_directory_uri() . '/assets/css/product-youtube-video.css' );
         }

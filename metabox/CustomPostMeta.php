@@ -89,6 +89,10 @@ abstract class CustomPostMeta {
      * @param int $post_id Post ID.
      */
     public function save_meta_data( $post_id ) {
+        if( ! in_array( get_post_type( $post_id ), $this->post_types ) ) {
+            return;
+        }
+        
         if ( ! isset( $_POST[ $this->meta_key ] ) ) {
             return;
         }

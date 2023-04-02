@@ -3,7 +3,7 @@
 
 
 /**
- * Class for custom product gallery post meta.
+ * Class for product gallery post meta.
  */
 
  namespace TwentyTwentyChild\Metabox;

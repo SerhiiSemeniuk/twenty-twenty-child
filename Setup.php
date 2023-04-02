@@ -9,7 +9,7 @@
  use TwentyTwentyChild\Custom\Filters, 
     TwentyTwentyChild\CPT\Products,
     TwentyTwentyChild\Taxonomy\ProductsCategory,
-    TwentyTwentyChild\Metabox\ProductGalery;
+    TwentyTwentyChild\Metabox;
 
  class Setup {
 
@@ -85,7 +85,12 @@
      */
 
      private function register_meta_boxes() {
-        new ProductGalery( 'product_gallery', __( 'Product Gallery', 'twentytwentychild' ) );
+        new Metabox\ProductGalery( 'product_gallery', __( 'Product Gallery', 'twentytwentychild' ) );
+        new Metabox\ProductPrice( 'product_price', __( 'Price', 'twentytwentychild' ) );
+        new Metabox\ProductSalePrice( 'product_sale_price', __( 'Sale Price', 'twentytwentychild' ) );
+        new Metabox\ProductOnSale( 'product_on_sale', __( 'Is on sale?', 'twentytwentychild' ) );
+        new Metabox\ProductYoutubeVideo( 'product_youtube_video', __( 'YouTube video', 'twentytwentychild' ) );
+        
     }
     
 }

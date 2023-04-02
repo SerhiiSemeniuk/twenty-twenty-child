@@ -1,0 +1,6 @@
+.youtube-video-preview iframe {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 768px;
+    aspect-ratio: 16/9;
+}

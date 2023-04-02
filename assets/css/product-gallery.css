@@ -1,3 +1,9 @@
+.image-gallery::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
 .image-gallery .image-gallery-item {
     position: relative;
     float: left;

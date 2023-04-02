@@ -18,7 +18,8 @@ class ProductOnSale extends CustomPostMeta {
      * @param WP_Post $post Post object.
      */
     public function render_meta_box( $post ) {
-        $on_sale = get_post_meta( $post->ID, $this->meta_key, true ); ?>
+        $on_sale = get_post_meta( $post->ID, $this->meta_key, true );
+        $this->nonce_field(); ?>
         <label for="$this->meta_key"><?php _e( 'Is Product on Sale' ) ?></label>
         <input type="checkbox" name="<?php echo $this->meta_key; ?>" <?php checked( true, $on_sale ); ?> value="1" id="<?php echo $this->meta_key; ?>">
     <?php }
@@ -30,6 +31,14 @@ class ProductOnSale extends CustomPostMeta {
      */
     public function save_meta_data( $post_id ) {
         if( ! in_array( get_post_type( $post_id ), $this->post_types ) ) {
+            return;
+        }
+
+        if( !$this->check_nonce_field() ) {
+            return;
+        }
+
+        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
             return;
         }
         

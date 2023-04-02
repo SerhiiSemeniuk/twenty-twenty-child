@@ -92,7 +92,15 @@ abstract class CustomPostMeta {
         if( ! in_array( get_post_type( $post_id ), $this->post_types ) ) {
             return;
         }
-        
+
+        if( !$this->check_nonce_field() ) {
+            return;
+        }
+
+        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+            return;
+        }
+
         if ( ! isset( $_POST[ $this->meta_key ] ) ) {
             return;
         }
@@ -119,5 +127,23 @@ abstract class CustomPostMeta {
      */
     protected function get_priority() {
         return 'default';
+    }
+
+    /**
+     * Show nonce field
+     */
+    protected function nonce_field() {
+        wp_nonce_field( $this->meta_key, $this->meta_key . '_nonce' );
+    }
+
+    /**
+     * Check nonce field
+     */
+    protected function check_nonce_field() {
+        if( !isset( $_POST[ $this->meta_key . '_nonce' ] ) ) {
+            return false;
+        }
+        $nonce = $_POST[ $this->meta_key . '_nonce' ];
+        return wp_verify_nonce( $nonce, $this->meta_key );
     }
 }

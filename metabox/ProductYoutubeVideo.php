@@ -29,7 +29,8 @@ class ProductYoutubeVideo extends CustomPostMeta {
      * @param WP_Post $post Post object.
      */
     public function render_meta_box( $post ) {
-        $youtube_id = get_post_meta( $post->ID, $this->meta_key, true ); ?>
+        $youtube_id = get_post_meta( $post->ID, $this->meta_key, true );
+        $this->nonce_field(); ?>
         <input class="youtube-video" type="text" name="<?php echo $this->meta_key; ?>" value="<?php echo $youtube_id; ?>" id="<?php echo $this->meta_key; ?>">
         <div class="youtube-video-preview">
             <?php if( !empty( $youtube_id ) ) : ?>

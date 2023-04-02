@@ -37,7 +37,8 @@ class ProductGalery extends CustomPostMeta {
                 'post__in' => $meta_value,
                 'orderby' => 'post__in',
             ) );
-        } ?>
+        }
+        $this->nonce_field(); ?>
         <ul class="image-gallery" data-metabox-name="<?php echo esc_attr( $this->meta_key ); ?>">
             <?php foreach ( $images as $image ) : ?>
                 <li id="image-<?php echo esc_attr( $image->ID ); ?>" class="image-gallery-item">
@@ -61,6 +62,14 @@ class ProductGalery extends CustomPostMeta {
      */
     public function save_meta_data( $post_id ) {
         if( ! in_array( get_post_type( $post_id ), $this->post_types ) ) {
+            return;
+        }
+
+        if( !$this->check_nonce_field() ) {
+            return;
+        }
+
+        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
             return;
         }
         

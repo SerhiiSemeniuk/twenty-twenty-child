@@ -8,3 +8,144 @@ License:      GNU General Public License v2 or later
 License URI:  http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:  twentytwentychild
 */
+
+.products-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    position: relative;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.products-list .products-list-item {
+    flex-basis: 100%;
+    padding: 20px;
+}
+
+.products-list .products-list-item .products-list-item-link {
+    display: block;
+    position: relative;
+    background-color: #fff;
+    height: 100%;
+}
+
+.products-list .products-list-item .sale-label {
+    transform-origin: 0 0;
+    z-index: 1;
+    position: absolute;
+    top: -24px;
+    right: -15px;
+    transform: translate(14%)translateY(0%)rotate(30deg);
+}
+
+.products-list .products-list-item .sale-label .label-content {
+    padding: 3px 10px;
+    color: #fff;
+    background-color: #cd2653;
+    display: inline-block;
+}
+
+
+.products-list .products-list-item .sale-label-ribbon {
+    transform-origin: 0 0;
+    z-index: -1;
+    position: absolute;
+    top: -24px;
+    right: -15px;
+    transform: translate(14%)translateY(0%)rotate(30deg);
+}
+
+.products-list .products-list-item .sale-label-ribbon .label-content {
+    opacity: 0;
+    padding: 3px 10px;
+    font-weight: 700;
+    line-height: 1.25;
+    display: inline-block;
+}
+
+.products-list .products-list-item .sale-label-ribbon .left-corner {
+    border-color: #cd2653;
+    border-left-width: 6px;
+    border-right-width: 20px;
+    left: -20px;
+    border-left-color: transparent!important;
+    z-index: -1;
+    border-style: solid;
+    border-width: 10px;
+    display: block;
+    position: absolute;
+    bottom: -10px;
+}
+
+.products-list .products-list-item .sale-label-ribbon .right-corner {
+    border-color: #cd2653;
+    border-left-width: 20px;
+    border-right-width: 6px;
+    right: -20px;
+    border-right-color: transparent!important;
+    z-index: -1;
+    border-style: solid;
+    border-width: 10px;
+    display: block;
+    position: absolute;
+    bottom: -10px;
+}
+
+
+.products-list .products-list-item img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.products-list .products-list-item .product-title {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 32px;
+}
+
+.product-price.on-sale .regular {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.product-youtube-video {
+    margin-top: 20px;
+    width: 100%;
+    aspect-ratio: 16/9;
+}
+
+.product-gallery .swiper-slide img {
+    width: 100%;
+    height: auto;
+}
+
+
+@media only screen and (min-width: 640px) {
+
+}
+
+@media only screen and (min-width: 768px) {
+    .products-list .products-list-item {
+        flex-basis: 50%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .products-list .products-list-item {
+        flex-basis: 33.333333333333333%;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    .products-list .products-list-item {
+        flex-basis: 25%;
+    }
+}
+
+@media only screen and (min-width: 1536px) {
+
+}

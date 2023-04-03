@@ -124,7 +124,7 @@ $product_categories = get_the_terms( $product_id, 'products_category' ); ?>
 
             $related_products_query = new WP_Query( $related_products_args );
             if ( $related_products_query->have_posts() ) :
-                $default_image_url = get_stylesheet_directory_uri() . '/assets/img/default-product-image.png' ?>
+                $default_image_url = get_stylesheet_directory_uri() . '/assets/img/default-product-image.png'; ?>
                 <div class="related-products">
                     <h2><?php _e( 'Related products', 'twentytwentychild' ); ?></h2>
                     <div class="products-list">

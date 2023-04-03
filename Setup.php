@@ -10,7 +10,8 @@
     TwentyTwentyChild\CPT\Products,
     TwentyTwentyChild\Taxonomy\ProductsCategory,
     TwentyTwentyChild\Metabox,
-    TwentyTwentyChild\Shortcode;
+    TwentyTwentyChild\Shortcode,
+    TwentyTwentyChild\Api\Router;
 
  class Setup {
 
@@ -37,6 +38,7 @@
         $this->register_custom_taxonomies();
         $this->register_meta_boxes();
         $this->register_shortcodes();
+        $this->register_routes();
     }
 
     /**
@@ -106,6 +108,14 @@
 
      private function register_shortcodes() {
         new Shortcode\ProductBox( 'product_box' );
+    }
+
+    /**
+     * Register API routes
+     */
+
+     private function register_routes() {
+        new Router\ProductRouter;
     }
     
 }

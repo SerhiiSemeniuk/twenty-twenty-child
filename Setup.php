@@ -9,7 +9,8 @@
  use TwentyTwentyChild\Custom\Filters, 
     TwentyTwentyChild\CPT\Products,
     TwentyTwentyChild\Taxonomy\ProductsCategory,
-    TwentyTwentyChild\Metabox;
+    TwentyTwentyChild\Metabox,
+    TwentyTwentyChild\Shortcode;
 
  class Setup {
 
@@ -35,6 +36,7 @@
         $this->register_custom_post_types();
         $this->register_custom_taxonomies();
         $this->register_meta_boxes();
+        $this->register_shortcodes();
     }
 
     /**
@@ -96,6 +98,14 @@
         new Metabox\ProductOnSale( 'product_on_sale', __( 'Is on sale?', 'twentytwentychild' ) );
         new Metabox\ProductYoutubeVideo( 'product_youtube_video', __( 'YouTube video', 'twentytwentychild' ) );
         
+    }
+
+    /**
+     * Register Shortcodes
+     */
+
+     private function register_shortcodes() {
+        new Shortcode\ProductBox( 'product_box' );
     }
     
 }

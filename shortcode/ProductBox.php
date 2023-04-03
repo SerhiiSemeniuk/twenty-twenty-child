@@ -17,6 +17,7 @@ class ProductBox extends CustomShortcode {
      */
     public function render_shortcode( $atts, $content ) {
         $atts = shortcode_atts( $this->default_attributes, $atts, $this->shortcode );
+        $atts = apply_filters( $this->shortcode . '_atts', $atts );
         $product = get_post( $atts['id'] );
         $return = '';
         if( !empty( $product ) && 'products' == $product->post_type ) { 

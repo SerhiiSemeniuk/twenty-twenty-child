@@ -14,6 +14,7 @@
 
     public function __construct() {
         add_filter( 'show_admin_bar', array( $this, 'show_admin_bar' ) );
+        add_filter( 'product_box_atts', array( $this, 'add_custom_color_for_mobile_browsers' ) );
     }
 
     /**
@@ -32,5 +33,12 @@
             }
         }
         return $show;
+    }
+
+    public function add_custom_color_for_mobile_browsers( $atts ) {
+        if(  preg_match( "/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i" , $_SERVER["HTTP_USER_AGENT"] ) ) {
+            $atts['bg_color'] = 'rgb(255 255 255 / 50%)';
+        }
+        return $atts;
     }
  }

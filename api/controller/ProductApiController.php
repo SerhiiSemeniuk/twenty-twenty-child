@@ -41,7 +41,9 @@
                 $return[] = $product;
             }
         }
-        return new \WP_REST_Response( $return );
+        return !empty( $return ) ? 
+            new \WP_REST_Response( $return ) :
+            new \WP_REST_Response(NULL, 404);
     }
 
     public static function get_products_category_by_slug( \WP_REST_Request $request ) {
@@ -77,7 +79,9 @@
                 $return[] = $product;
             }
         }
-        return new \WP_REST_Response( $return );
+        return !empty( $return ) ? 
+            new \WP_REST_Response( $return ) :
+            new \WP_REST_Response(NULL, 404);
     }
     
  }
